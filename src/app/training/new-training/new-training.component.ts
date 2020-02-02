@@ -1,21 +1,19 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TrainingService } from '../training.service';
+import { Exercise } from '../exercise.model';
 
 @Component({
-  selector: "app-new-training",
-  templateUrl: "./new-training.component.html",
-  styleUrls: ["./new-training.component.scss"]
+    selector: 'app-new-training',
+    templateUrl: './new-training.component.html',
+    styleUrls: ['./new-training.component.scss'],
 })
 export class NewTrainingComponent implements OnInit {
-  foods = [
-    { viewValue: "Crunches", value: "crunches" },
-    { viewValue: "Toe Touch", value: "touch-toes" },
-    { viewValue: "Side Lunges", value: "side-lunges" },
-    { viewValue: "Burpees", value: "burpees" }
-  ];
+    @Output() trainingStart = new EventEmitter<void>();
+    exercises: Exercise[];
 
-  @Output() trainingStart = new EventEmitter<void>()
-  
-  constructor() {}
+    constructor(private trainingService: TrainingService) {}
 
-  ngOnInit() {}
+    ngOnInit() {
+        this.exercises = this.trainingService.getAvailableExercises();
+    }
 }
