@@ -1,21 +1,37 @@
 import { NgModule } from "@angular/core";
 import {
   MatButtonModule,
-  MatIconModule,
   MatFormFieldModule,
   MatInputModule,
   MatCheckboxModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatTabsModule,
+  MatCardModule,
+  MatSelectModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDialogModule
 } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 const materialModules = [
   MatButtonModule,
-  MatIconModule,
   MatFormFieldModule,
   MatInputModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatTabsModule,
+  MatCardModule,
+  MatSelectModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDialogModule
 ];
 
 @NgModule({

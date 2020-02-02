@@ -11,9 +11,12 @@ import { CurrentTrainingComponent } from "./training/current-training/current-tr
 import { NewTrainingComponent } from "./training/new-training/new-training.component";
 import { PasTrainingComponent } from "./training/pas-training/pas-training.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
-import { FormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from "@angular/forms";
+import { MatDatepickerModule, MatIconModule } from "@angular/material";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { HeaderComponent } from "./navigation/header/header.component";
+import { SidenavListComponent } from "./navigation/sidenav-list/sidenav-list.component";
+import { StopTrainingComponent } from './training/current-training/stop-training.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CurrentTrainingComponent,
     NewTrainingComponent,
     PasTrainingComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    StopTrainingComponent
   ],
   imports: [
     BrowserModule,
@@ -33,8 +39,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDatepickerModule,
     MaterialModule,
     FlexLayoutModule,
+    MatIconModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [StopTrainingComponent]
 })
 export class AppModule {}
