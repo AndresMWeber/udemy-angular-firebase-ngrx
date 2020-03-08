@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core'
 import {
   MatButtonModule,
   MatFormFieldModule,
@@ -14,9 +14,12 @@ import {
   MatSelectModule,
   MatProgressSpinnerModule,
   MatProgressBarModule,
-  MatDialogModule
-} from "@angular/material";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+  MatDialogModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule
+} from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 const materialModules = [
   MatButtonModule,
@@ -31,16 +34,14 @@ const materialModules = [
   MatSelectModule,
   MatProgressSpinnerModule,
   MatProgressBarModule,
-  MatDialogModule
-];
+  MatDialogModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule
+]
 
 @NgModule({
-  imports: [
-    MatNativeDateModule,
-    BrowserAnimationsModule,
-    MatDatepickerModule,
-    ...materialModules,
-  ],
+  imports: [MatNativeDateModule, BrowserAnimationsModule, MatDatepickerModule, ...materialModules],
   exports: materialModules
 })
 export class MaterialModule {}
