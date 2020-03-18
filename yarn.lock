@@ -1745,6 +1745,11 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+angular2-fontawesome@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/angular2-fontawesome/-/angular2-fontawesome-5.2.1.tgz#dcab656b7750b8d119ab2b3b6b4abda1a4ab4a84"
+  integrity sha512-aS6Y8dBLFdSx4yqyqIQDujIKAHJjqvdaD/y3/qDPE/pHYd/HBZZMLBlHcVuocraA5TuPBWBxF1w9NxT+3J54nQ==
+
 angularfire2@^5.4.2:
   version "5.4.2"
   resolved "https://registry.yarnpkg.com/angularfire2/-/angularfire2-5.4.2.tgz#e6b7df3c070aaddba6f650abfdc4c89aec306f7a"
@@ -3965,6 +3970,11 @@ follow-redirects@^1.0.0:
   integrity sha512-4eyLK6s6lH32nOvLLwlIOnr9zrL8Sm+OvW4pVTJNoXeGzYIkHVf+pADQi+OJ0E67hiuSLezPVPyBcIZO50TmmQ==
   dependencies:
     debug "^3.0.0"
+
+font-awesome@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
+  integrity sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=
 
 for-in@^1.0.2:
   version "1.0.2"

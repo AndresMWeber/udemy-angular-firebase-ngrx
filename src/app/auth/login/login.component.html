@@ -1,49 +1,41 @@
 <section class="login-form">
     <form
         fxLayout="column"
-        fxLayoutGap="10px"
         fxLayoutAlign="center center"
-        #f="ngForm"
-        (ngSubmit)="onSubmit(f)"
+        fxLayoutGap="10px"
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
     >
         <mat-form-field>
             <input
-                matInput
                 type="email"
+                matInput
                 placeholder="Your email"
-                ngModel
-                name="email"
+                formControlName="email"
                 required
-                #emailInput="ngModel"
+                autocomplete="username"
             />
-            <mat-error *ngIf="emailInput.hasError('required')"
-                >Email must not be empty.</mat-error
-            >
-            <mat-error *ngIf="!emailInput.hasError('required')"
-                >E-mail is invalid.</mat-error
-            >
+            <mat-error *ngIf="loginForm.controls.email.hasError('required')">Email must not be empty.</mat-error>
+            <mat-error *ngIf="!loginForm.controls.email.hasError('required')">E-mail is invalid.</mat-error>
         </mat-form-field>
         <mat-form-field hintLabel="Should be at least 6 characters long.">
             <input
                 matInput
+                required
                 type="password"
                 placeholder="Your password"
-                ngModel
-                name="password"
-                required
+                formControlName="password"
                 minlength="6"
-                #pwInput="ngModel"
+                autocomplete="current-password"
             />
-            <mat-hint align="end">{{ pwInput.value?.length }}</mat-hint>
+            <mat-hint align="end">{{ loginForm.controls.password.value?.length }}</mat-hint>
             <mat-error>Has to be at least 6 characters long.</mat-error>
         </mat-form-field>
-        <button
-            [disabled]="f.invalid"
-            type="submit"
-            mat-raised-button
-            color="primary"
-        >
-            Submit
+        <button [disabled]="loginForm.invalid" type="submit" mat-raised-button color="primary">Submit</button>
+
+        <button type="button" mat-raised-button class="btn btn-block" (click)="signInWithGoogle()">
+            <i class="fa fa-google" aria-hidden="true"></i>
+            Login with Google
         </button>
     </form>
 </section>

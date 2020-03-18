@@ -1,49 +1,55 @@
-import { v4 as uuid } from 'uuid'
 import { Subject } from 'rxjs'
-import { User } from './user.model'
 import { AuthData } from './auth-data.model'
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
+import { AngularFireAuth } from 'angularfire2/auth'
+import { TrainingService } from '../training/training.service'
+import * as firebase from 'firebase/app'
 
 @Injectable()
 export class AuthService {
     authChange = new Subject<boolean>()
 
-    private user: User
+    private isAuthenticated = false
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private fireAuth: AngularFireAuth, private trainingService: TrainingService) {}
 
-    registerUser(authData: AuthData) {
-        this.user = {
-            email: authData.email,
-            userId: uuid(),
-        }
-        this.authSuccessRedirect()
+    initAuthListener() {
+        this.fireAuth.authState.subscribe(user => {
+            if (user) {
+                this.isAuthenticated = true
+                this.authChange.next(true)
+                this.router.navigate(['/training'])
+            } else {
+                this.trainingService.cancelSubscriptions()
+                this.isAuthenticated = false
+                this.authChange.next(false)
+                this.router.navigate(['/login'])
+            }
+        })
     }
 
-    login(authData: AuthData) {
-        this.user = {
-            email: authData.email,
-            userId: uuid(),
-        }
-        this.authSuccessRedirect()
-    }
-
-    private authSuccessRedirect() {
-        this.authChange.next(true)
-        this.router.navigate(['/training'])
-    }
-
-    logout() {
-        this.user = undefined
-        this.authChange.next(false)
-    }
-
-    getUser() {
-        return { ...this.user }
+    signInWithGoogle() {
+        return this.fireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     }
 
     isAuth() {
-        return this.user != null && this.user !== undefined
+        return this.isAuthenticated
+    }
+
+    registerUser(authData: AuthData) {
+        this.fireAuth.auth.createUserWithEmailAndPassword(authData.email, authData.password).catch(err => {
+            console.log(err)
+        })
+    }
+
+    login(authData: AuthData) {
+        this.fireAuth.auth.signInWithEmailAndPassword(authData.email, authData.password).catch(err => {
+            console.log(err)
+        })
+    }
+
+    logout() {
+        this.fireAuth.auth.signOut()
     }
 }
