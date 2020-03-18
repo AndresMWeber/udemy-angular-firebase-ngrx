@@ -4,4 +4,3 @@ useTabs: false
 printWidth: 120
 tabWidth: 2
 trailingComma: none
-parser: babel
